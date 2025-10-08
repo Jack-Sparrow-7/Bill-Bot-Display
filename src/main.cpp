@@ -60,45 +60,26 @@ void receiveEvent(int bytes)
     char c = Wire.read();
     statusMessage += c;
   }
-  int separatorIndex = statusMessage.indexOf(":");
-  if (separatorIndex > 0)
+  Serial.print("Received Data: ");
+  Serial.println(statusMessage);
+  
+  if (statusMessage == "RESET")
   {
-    String billNo = statusMessage.substring(0, separatorIndex);
-    String statusValue = statusMessage.substring(separatorIndex + 1);
-    String result;
-    Serial.println(statusValue);
-    if (statusValue == "ALREADY_PRINTED")
-      result = "Your Order is Already Printed!";
-    else if (statusValue == "INVALID_ID")
-      result = "Invalid ID, Try again!";
-    else if (statusValue == "READY_TO_SCAN")
-      result = "Ready to Scan!";
-    else if (statusValue == "FETCHING")
-      result = "Getting Order Details...";
-    else if (statusValue == "PRINTING")
-      result = "Your Bill - " + billNo + " is Printing!";
-    else if (statusValue == "NOT_FOUND")
-      result = "Your Order Not Found!";
-    else if (statusValue == "PRINTED")
-      result = "Thank You!\nYour Bill - " + billNo + " is Printed!";
-    else if (statusValue == "PAPER_OUT")
-      result = "Sorry,Paper not Available!";
-    else if (statusValue == "PAYMENT_NOT_COMPLETED")
-      result = "Payment Pending!";
-    else if (billNo == "OTP")
-      result = "OTP: " + statusValue;
-    else if (statusValue == "RESET")
-      ESP.restart();
-    if (result.length() > 0)
-    {
-      set_var_status(result.c_str());
-    }
+    Serial.println("Rebooting ...");
+    delay(2000);
+    ESP.restart();
+  }
+
+  if (statusMessage.length() > 0)
+  {
+    set_var_status(statusMessage.c_str());
   }
 }
 
 void setup()
 {
   Serial.begin(9600);
+  Serial.println("Serial Initialized!");
   Wire.begin(slave_address);
 
   // Port_D
