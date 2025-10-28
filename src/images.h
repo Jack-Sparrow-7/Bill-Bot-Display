@@ -27,4 +27,4 @@ extern const ext_img_desc_t images[4];
 }
 #endif
 
-#endif
+#endif /*EEZ_LVGL_UI_IMAGES_H*/
