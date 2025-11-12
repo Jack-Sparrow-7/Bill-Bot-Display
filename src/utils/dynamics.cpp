@@ -1,0 +1,5 @@
+#include "dynamics.h"
+
+String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjaGFudElkIjoiOTE4MDU4MjUtNTk1ZS00YmE4LTk3ZGYtMzcyNjk4OTc3MWJhIiwic3RvcmVJZCI6IlN0b3JlMXMiLCJ0ZXJtaW5hbE51bWJlciI6InN1cFNLWjc5T0c4IiwidGVybWluYWxJZCI6IlQyMSIsImlzYWR2ZXJ0aXNlbWVudERpc3BsYXkiOm51bGwsImlzT3JkZXJEaXNwbGF5IjpudWxsLCJpYXQiOjE3NTk3NTM2NzYsImV4cCI6MTc5MTI4OTY3Nn0.Yl0sk0F_47fu1sNxcqA3Ll4M13j2D0B7YDDvwWCMl4M";
+String serverVersion = "";
+String currentVersion = "";
